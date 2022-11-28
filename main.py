@@ -10,10 +10,9 @@ def fact(n):
         return 1
     return  n * fact(n-1)
 
-
 def main():
     my_n = int(input("what number shall we calculate factorial:"))
-    result = loop_fact(my_n)
+    result = fact(my_n)
     print(f"the result is {result}")
 
 main()
