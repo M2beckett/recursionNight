@@ -16,12 +16,12 @@ def get_data(filename):
     list_of_students = []
     for student_line in lines:
         data = student_line.split('|')
-        current_student = student(data[0], int(data[1]), gpa=data[3], credits=data[2])
+        current_student = student(data[0], int(data[1]), gpa=float(data[3]), credits=int(data[2]))
         list_of_students.append(current_student)
     return list_of_students
 
-def get_key(student_to_sort:student):
-    return  student_to_sort.name
+def get_key(student_to_sort):
+    return  student_to_sort.gpa
 
 def main():
     student_data = get_data("students.txt")
