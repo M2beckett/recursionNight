@@ -10,6 +10,19 @@ class student:
         return f"Student with name: {self.name} and bannerId: {self.bannerId} \n gpa: {self.gpa}, credits: {self.credits}"
 #end student class
 
+def binary_search(list_of_students, student_to_find):
+    if list_of_students ==[]:
+        return None
+    middle = len(list_of_students)//2
+    middle_student = list_of_students[middle]
+    if middle_student.name == student_to_find:
+        return middle_student
+    if middle_student.name < student_to_find:
+        return binary_search(list_of_students[middle+1:],student_to_find)
+    else:
+        return binary_search(list_of_students[:middle-1], student_to_find)
+
+
 def get_data(filename):
     student_file = open(filename)
     lines = student_file.readlines()
@@ -21,13 +34,16 @@ def get_data(filename):
     return list_of_students
 
 def get_key(student_to_sort):
-    return  student_to_sort.gpa
+    return  student_to_sort.name
 
 def main():
     student_data = get_data("students.txt")
     student_data.sort(key=get_key)
-    for stu in student_data:
-        print(stu)
+    stu_to_find = input("what student should we find")
+    result = binary_search(student_data, stu_to_find)
+    print(result)
+#    for stu in student_data:
+#        print(stu)
 
 main()
 
