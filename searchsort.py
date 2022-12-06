@@ -45,6 +45,24 @@ def main():
 #    for stu in student_data:
 #        print(stu)
 
-main()
+def find_sum_of_credits():
+    student_data = get_data("students.txt")
+    sum = 0
+    for someone in student_data:
+        sum = sum + someone.credits
+    return sum
+
+def recursive_sum_of_credits(student_list):
+    if not student_list:
+        return 0
+    first_student = student_list[0]
+    return first_student.credits + recursive_sum_of_credits(student_list[1:])
+
+
+recursive_sum = recursive_sum_of_credits(get_data("students.txt"))
+sum = find_sum_of_credits()
+print(f"those students too {sum} credits all together")
+print(f"the recursive calculated sum is {recursive_sum}")
+#main()
 
 
